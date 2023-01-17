@@ -1,5 +1,18 @@
 with
 
+
+customers as (
+
+  select * from {{ ref('stg_jaffle_shop__customers') }}
+
+),
+
+paid_orders as (
+
+  select * from {{ ref('int_orders') }}
+
+),
+
 final as (
 
   select
