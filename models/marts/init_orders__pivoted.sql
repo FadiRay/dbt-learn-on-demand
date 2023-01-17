@@ -2,7 +2,7 @@
 
 with
 payments as (
-   select * from {{ ref('stg_jaffle_shop__customers') }}
+   select * from {{ ref('stg_stripe__payments') }} 
 ),
 
 final as (
@@ -13,7 +13,7 @@ final as (
         {%- if not loop.last -%}
         ,
         {% endif -%}
-        {% endfor -%}
+        {% endfor %}
     from {{ ref('stg_stripe__payments') }} 
     group by 1
 
