@@ -8,7 +8,7 @@ payments as (
 final as (
     order_id,
     {% for payment_method in payment_methods -%}
-    sum(case {{payment_method}} then amount else 0 end) as {{payment_method}}_amount
+    sum(case payment_methode = '{{payment_method}}' then amount else 0 end) as {{payment_method}}_amount
     {%- if not loop.last -%}
     ,
     {% endif -%}
